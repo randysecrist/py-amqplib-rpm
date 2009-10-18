@@ -1,0 +1,71 @@
+======================================================
+py-amqplib - Python Bindings for AMQP
+======================================================
+
+Current Maintainers:
+  py-amqplib:
+        Barry Pederson
+  RPM:
+	Randy Secrist <randy.secrist AT gmail.com>
+
+Contributions by:
+
+Introduction
+------------
+
+The goal of py-amqplib-rpm is to provide a working RPM for RHEL 5.x+ based
+linux distributions.
+
+If patches for source for other distributions are submitted, they must first
+continue to work under anaconda and yum before they will be accepted.
+
+INCLUDED:
+- py-amqplib 0.6.1 from http://code.google.com/p/py-amqplib
+- This RPM is unsigned.  To sign it, please use 'rpm --addsign'.
+
+FEATURES:
+
+TODO: (See RELEASE_INFO and CHANGELOG for recent changes)
+
+MANIFEST:
+
+    Files
+    -----
+
+    README	        This file
+    RELEASE_NOTES       General information about each release
+    CHANGELOG           Detailed list of changes
+    TODO		List of tasks that need to be done
+
+    build               Gathers TAR from upstream, executes rpmbuild
+
+    Directories
+    -----------
+
+    rpmbuild/*          Template directories for rpmbuild
+
+
+INSTALLATION 
+
+Required Packages
+-----------------
+  INFO
+
+Optional
+--------
+  INFO
+
+Installation
+------------
+  INFO
+
+To install:
+
+  1) Install the RPM using one of two methods:
+
+     a)  $ rpm -ivh py-amqplib-0.6.1-1.noarch.rpm
+     b)  $ yum localinstall py-amqplib-0.6.1-1.noarch.rpm --nogpgcheck
+
+QUICK START
+
+For further information on using amqplib, see the files in the doc/ directory.
