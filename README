@@ -32,10 +32,10 @@ MANIFEST:
     Files
     -----
 
-    README	        This file
+    README              This file
     RELEASE_NOTES       General information about each release
     CHANGELOG           Detailed list of changes
-    TODO		List of tasks that need to be done
+    TODO                List of tasks that need to be done
 
     build               Gathers TAR from upstream, executes rpmbuild
 
