@@ -31,6 +31,7 @@ class Main:
     def __export(self):
         logging.info('Exporting Upstream ...')
         logging.info('Please ensure you have wget, and http_proxy is configured if necessary.')
+        os.system("mkdir -p rpmbuild/{SOURCES,RPMS,SRPMS,BUILD}")
         os.system("wget -P rpmbuild/SOURCES -nH -l 1 -N http://py-amqplib.googlecode.com/files/amqplib-0.6.1.tgz")
     
     def __build(self):
@@ -44,9 +45,10 @@ class Main:
         os.system("find . -name \"*.pyc\" -exec rm -rf {} \;")
         os.system("rm -rf dist")
         os.system("rm -rf rpmbuild/BUILDROOT")
-        os.system("rm -rf rpmbuild/RPMS/noarch/*.rpm")
-        os.system("rm -rf rpmbuild/SRPMS/*.rpm")
-        os.system("rm -rf rpmbuild/BUILD/*")
+        os.system("rm -rf rpmbuild/SOURCES")
+        os.system("rm -rf rpmbuild/RPMS")
+        os.system("rm -rf rpmbuild/SRPMS")
+        os.system("rm -rf rpmbuild/BUILD")
 
 if __name__ == '__main__':
     main = Main()
