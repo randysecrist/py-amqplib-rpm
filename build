@@ -1,0 +1,53 @@
+#!/usr/bin/python -u
+
+import logging
+import os
+
+logging.basicConfig(level=logging.DEBUG)
+
+class Main:
+    """
+    The functions here have the following responsiblity:
+      - export
+          gather sources from upstream, and ensure they are compressed format
+      - build
+          executes rpmbuild, defines _topdir
+          moves rpm and srpm to current directory.
+      - compress
+          compress into TAR / BZ2 format if not already done.
+      - clean
+          cleans up files within rpmbuild directory.
+    """
+    
+    def doBuild(self):
+        self.__export()
+        #self.__compress()
+        self.__build()
+        self.__clean()
+    
+    """
+    Gather external source if necessary.
+    """
+    def __export(self):
+        logging.info('Exporting Upstream ...')
+        logging.info('Please ensure you have wget, and http_proxy is configured if necessary.')
+        os.system("wget -P rpmbuild/SOURCES -nH -l 1 -N http://py-amqplib.googlecode.com/files/amqplib-0.6.1.tgz")
+    
+    def __build(self):
+        logging.info('Running RPM Build ...')
+        os.system("rpmbuild -ba --define \"_topdir $PWD/rpmbuild\" rpmbuild/SPECS/py-amqplib.spec")
+        os.system("cp -pr rpmbuild/RPMS/noarch/* .")
+        os.system("cp -pr rpmbuild/SRPMS/* .")
+    
+    def __clean(self):
+        logging.info('Cleaning Up ...')
+        os.system("find . -name \"*.pyc\" -exec rm -rf {} \;")
+        os.system("rm -rf dist")
+        os.system("rm -rf rpmbuild/BUILDROOT")
+        os.system("rm -rf rpmbuild/RPMS/noarch/*.rpm")
+        os.system("rm -rf rpmbuild/SRPMS/*.rpm")
+        os.system("rm -rf rpmbuild/BUILD/*")
+
+if __name__ == '__main__':
+    main = Main()
+    main.doBuild()
