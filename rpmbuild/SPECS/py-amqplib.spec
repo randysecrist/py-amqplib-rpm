@@ -12,6 +12,7 @@ Group:          Development/Libraries/Python
 URL:            http://py-amqplib.googlecode.com
 Autoreqprov:    on
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n )
+BuildRequires:  python-devel
 
 %description
  py-amqplib is a client Python library for working with AMQP message
