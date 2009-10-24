@@ -1,7 +1,6 @@
 %define tarname amqplib
 
 Name:           py-amqplib
-BuildRequires:  python-devel
 BuildArch:      noarch
 Summary:        AMQP Library for Python
 Version:        0.6.1
